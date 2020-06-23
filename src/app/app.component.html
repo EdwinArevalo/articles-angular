@@ -9,13 +9,15 @@
     <table class="table table-borderless table-dark"  *ngIf="hayRegistros(); else sinarticulos">
       <thead>
       <tr>
-        <td>Codigo</td>
-        <td>Nombre</td>
-        <td>Tipo</td>
-        <td>Precio</td>
-        <td>Stock</td>
-        <td>Borrar</td>
-        <td>Seleccionar</td>
+        <th>Codigo</th>
+        <th>Nombre</th>
+        <th>Tipo</th>
+        <th>Precio</th>
+        <th>Stock</th>
+        <th>Nombre del Archivo</th>
+        <th>Ruta del Archivo</th>
+        <th>Borrar</th>
+        <th>Seleccionar</th>
       </tr>
     </thead>
     <tbody>
@@ -25,7 +27,9 @@
         <td>{{articulo.tipo}}</td>
         <td>{{articulo.precio}}</td>
         <td>{{articulo.stock}}</td>
-        <td><button (click)="eliminar(articulo.id)" class="btn btn-danger">Borrar?</button></td>
+        <td>{{articulo.nombre_archivo}}</td>
+        <td>{{articulo.ruta_archivo}}</td>
+        <td><button (click)="eliminar(articulo.id)" class="btn btn-danger">¿Borrar?</button></td>
         <td><button (click)="mostrar(articulo.id)" class="btn btn-primary">Seleccionar</button></td>
       </tr>
     </tbody>
@@ -44,7 +48,26 @@
       </div>
       <div class="form-group">
         Stock:<input type="number" class="form-control"  [(ngModel)]="art.stock" />
-      </div>          
+      </div> 
+
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text upload" (click)="upload()" id="btnUpload">
+            Subir
+          </span>
+        </div>
+        <div class="custom-file">
+          <form action="/articulos/" method="post" enctype="multipart/form-data">
+            <input (change)="fileChange($event)"
+                   type="file" class="custom-file-input" id="inputGroupFile01"
+                   aria-describedby="inputGroupFileAddon01">
+          </form>
+          <label class="custom-file-label" for="inputGroupFile01">
+             Escoger Archivo
+          </label>
+        </div>
+      </div>
+       
       <p><button (click)="nuevo()" class="btn btn-success" style="margin:5px;">Agregar</button>
       <button (click)="actualizar()" class="btn btn-success">Modificar</button></p>
     </div>
