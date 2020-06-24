@@ -13,7 +13,7 @@ export class ArticulosService {
     return this.http.get(`${this.url}listar`);
   }
   nuevo(producto) {
-    return this.http.post(`${this.url}`, producto);    
+    return this.http.post(`${this.url}`,producto);    
   }
   eliminar(codigo) {
     return this.http.delete(`${this.url}${codigo}`);

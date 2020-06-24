@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  uploadedFiles: Array <File>;
+  uploadedFiles: File;
   title = 'frontAngularApp';
   lista=null;
   art: any = {
@@ -79,14 +79,10 @@ export class AppComponent {
   //Agregado
   fileChange(element) {
     this.uploadedFiles = element.target.files;
+    console.log(this.uploadedFiles);
   }
   upload() {
     let producto = new FormData();
-    for (var i = 0; i < this.uploadedFiles.length; i++) {
-      producto.append("uploads[]",
-	this.uploadedFiles[i],
-	this.uploadedFiles[i].name);
-    }
     this.articulosServicio.nuevo(producto).subscribe((res)=> {
       console.log('response received is ', res);
     });

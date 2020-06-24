@@ -14,8 +14,7 @@
         <th>Tipo</th>
         <th>Precio</th>
         <th>Stock</th>
-        <th>Nombre del Archivo</th>
-        <th>Ruta del Archivo</th>
+        <th>Imagen</th>
         <th>Borrar</th>
         <th>Seleccionar</th>
       </tr>
@@ -27,8 +26,7 @@
         <td>{{articulo.tipo}}</td>
         <td>{{articulo.precio}}</td>
         <td>{{articulo.stock}}</td>
-        <td>{{articulo.nombre_archivo}}</td>
-        <td>{{articulo.ruta_archivo}}</td>
+        <td><img src="http://localhost:3000/images/{{articulo.nombre_archivo}}" alt="" height="80px" ></td>
         <td><button (click)="eliminar(articulo.id)" class="btn btn-danger">¿Borrar?</button></td>
         <td><button (click)="mostrar(articulo.id)" class="btn btn-primary">Seleccionar</button></td>
       </tr>
